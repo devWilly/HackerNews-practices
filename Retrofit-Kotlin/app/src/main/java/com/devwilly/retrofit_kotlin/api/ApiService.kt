@@ -13,7 +13,7 @@ interface ApiService {
     fun getTopStories(): Call<List<Int>>
 
     @GET("v0/newstories.json?print=pretty")
-    fun getgetNewStories(): Call<List<Int>>
+    fun getNewStories(): Call<List<Int>>
 
     @GET("v0/beststories.json?print=pretty")
     fun getBestStories(): Call<List<Int>>
