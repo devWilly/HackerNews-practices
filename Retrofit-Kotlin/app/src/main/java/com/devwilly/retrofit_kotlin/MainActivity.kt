@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val storiesTextId: TextView = findViewById(R.id.stories_text_id)
-        var sb = StringBuffer()
+        val sb = StringBuffer()
 
         var topStoriesListResponse: Call<List<Int>> = getApiService().getTopStories()
         topStoriesListResponse.enqueue(object: Callback<List<Int>> {
@@ -41,6 +41,24 @@ class MainActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<List<Int>>?, t: Throwable?) {
 
+            }
+        })
+
+        val newStoriesListResponse: Call<List<Int>> = getApiService().getNewStories()
+        newStoriesListResponse.enqueue(object: Callback<List<Int>>{
+            override fun onResponse(call: Call<List<Int>>?, response: Response<List<Int>>?) {
+                var list: List<Int>? = response?.body()
+                sb.append('\n').append(getString(R.string.new_stories))
+
+                for (item in list!!) {
+                    sb.append('\n').append(item)
+                }
+
+                storiesTextId.text = sb.toString()
+            }
+
+            override fun onFailure(call: Call<List<Int>>?, t: Throwable?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
         })
 
