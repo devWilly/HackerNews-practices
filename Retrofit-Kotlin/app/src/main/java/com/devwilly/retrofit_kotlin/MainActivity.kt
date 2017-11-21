@@ -13,6 +13,9 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.top_story_btn).setOnClickListener({ openActivityPage(TopStoriesActivity::class.java) })
 
+        val bestStoryBtn: Button = findViewById(R.id.best_stories_btn)
+        bestStoryBtn.setOnClickListener({openActivityPage(BestStoriesActivity::class.java)})
+
     }
 
     private fun openActivityPage(cls: Class<*>) {
