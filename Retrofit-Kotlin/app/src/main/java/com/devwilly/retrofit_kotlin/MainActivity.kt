@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.top_story_btn).setOnClickListener({ openActivityPage(TopStoriesActivity::class.java) })
 
         val bestStoryBtn: Button = findViewById(R.id.best_stories_btn)
-        bestStoryBtn.setOnClickListener({openActivityPage(BestStoriesActivity::class.java)})
+        bestStoryBtn.setOnClickListener({ openActivityPage(BestStoriesActivity::class.java) })
 
         findViewById<Button>(R.id.story_detail_btn).setOnClickListener({ openActivityPage(StoriesDetailActivity::class.java) })
 
