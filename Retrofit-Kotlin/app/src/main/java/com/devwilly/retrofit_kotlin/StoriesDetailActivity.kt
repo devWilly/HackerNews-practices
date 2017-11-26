@@ -21,7 +21,7 @@ class StoriesDetailActivity : AppCompatActivity() {
         val storyTitle = findViewById<TextView>(R.id.story_text)
         val sb = StringBuffer()
 
-        ApiClient().getApiService().getTopStories().enqueue(object : Callback<List<Int>>{
+        ApiClient.getApiService().getTopStories().enqueue(object : Callback<List<Int>>{
             override fun onResponse(call: Call<List<Int>>?, response: Response<List<Int>>?) {
                 val list = response?.body()
 
@@ -29,7 +29,7 @@ class StoriesDetailActivity : AppCompatActivity() {
                     // give five list item to test story detail api
                     val sampleList = listOf(list[0], list[1], list[2], list[3], list[4], list[5])
                     sampleList.forEach { index ->
-                        ApiClient().getApiService().getStoryDetail(index)
+                        ApiClient.getApiService().getStoryDetail(index)
                                 .enqueue(object : Callback<StoryDetailModel> {
                                     override fun onResponse(call: Call<StoryDetailModel>?, response: Response<StoryDetailModel>?) {
                                         val item = response?.body()

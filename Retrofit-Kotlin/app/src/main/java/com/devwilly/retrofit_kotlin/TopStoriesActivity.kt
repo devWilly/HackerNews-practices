@@ -20,7 +20,7 @@ class TopStoriesActivity : AppCompatActivity() {
         val storyText = findViewById<TextView>(R.id.story_text)
         val sb = StringBuffer()
 
-        ApiClient().getApiService().getTopStories().enqueue(object : Callback<List<Int>>{
+        ApiClient.getApiService().getTopStories().enqueue(object : Callback<List<Int>>{
             override fun onResponse(call: Call<List<Int>>?, response: Response<List<Int>>?) {
                 sb.append(getString(R.string.top_stories))
 

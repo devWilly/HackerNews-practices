@@ -8,13 +8,15 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 class ApiClient {
 
-    private fun getRetrofit(): Retrofit {
-        return Retrofit.Builder()
-                .baseUrl("https://hacker-news.firebaseio.com/")
-                .addConverterFactory(GsonConverterFactory.create()).build()
-    }
+    companion object {
+        private fun getRetrofit(): Retrofit {
+            return Retrofit.Builder()
+                    .baseUrl("https://hacker-news.firebaseio.com/")
+                    .addConverterFactory(GsonConverterFactory.create()).build()
+        }
 
-    fun getApiService(): ApiService {
-        return getRetrofit().create(ApiService::class.java)
+        fun getApiService(): ApiService {
+            return getRetrofit().create(ApiService::class.java)
+        }
     }
 }

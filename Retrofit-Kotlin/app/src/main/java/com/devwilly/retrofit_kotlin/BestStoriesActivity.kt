@@ -20,7 +20,7 @@ class BestStoriesActivity : AppCompatActivity() {
         val storyText = findViewById<TextView>(R.id.story_text)
         val sb = StringBuffer()
 
-        ApiClient().getApiService().getBestStories().enqueue(object : Callback<List<Int>> {
+        ApiClient.getApiService().getBestStories().enqueue(object : Callback<List<Int>> {
             override fun onResponse(call: Call<List<Int>>?, response: Response<List<Int>>?) {
                 sb.append(getString(R.string.best_stories))
 
