@@ -25,8 +25,7 @@ class StoriesDetailActivity : AppCompatActivity() {
             override fun onResponse(call: Call<List<Int>>?, response: Response<List<Int>>?) {
                 val list = response?.body()
 
-                if (list != null) {
-                    // give five list item to test story detail api
+                list?.let {
                     val sampleList = listOf(list[0], list[1], list[2], list[3], list[4], list[5])
                     sampleList.forEach { index ->
                         ApiClient.getApiService().getStoryDetail(index)
