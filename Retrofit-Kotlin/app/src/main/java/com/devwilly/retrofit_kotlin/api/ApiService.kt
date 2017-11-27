@@ -1,6 +1,7 @@
 package com.devwilly.retrofit_kotlin.api
 
 import com.devwilly.retrofit_kotlin.model.StoryDetailModel
+import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -22,4 +23,7 @@ interface ApiService {
 
     @GET("v0/item/{id}.json?print=pretty")
     fun getStoryDetail(@Path("id") id: Int): Call<StoryDetailModel>
+
+    @GET("v0/jobstories.json?print=pretty")
+    fun getJobStories(): Observable<List<Int>>
 }
