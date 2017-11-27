@@ -4,4 +4,5 @@
     <string name="new_stories">[New-Stories]</string>
     <string name="best_stories">[Best-Stories]</string>
     <string name="story_detail">[Story-Detail]</string>
+    <string name="job_stories_rxjava">[Job-Stories+Rxjava]</string>
 </resources>
