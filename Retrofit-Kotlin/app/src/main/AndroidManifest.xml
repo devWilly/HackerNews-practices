@@ -24,6 +24,7 @@
         <activity android:name=".BestStoriesActivity" />
         <activity android:name=".StoriesDetailActivity" />
         <activity android:name=".JobStoriesActivity" />
+        <activity android:name=".JobDetailActivity" />
 
     </application>
 

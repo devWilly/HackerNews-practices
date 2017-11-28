@@ -5,4 +5,5 @@
     <string name="best_stories">[Best-Stories]</string>
     <string name="story_detail">[Story-Detail]</string>
     <string name="job_stories_rxjava">[Job-Stories+Rxjava]</string>
+    <string name="job_detail_flatmap">[Job-detail+flatmap]</string>
 </resources>

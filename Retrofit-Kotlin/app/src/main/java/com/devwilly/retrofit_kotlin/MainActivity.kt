@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.job_stories_btn).setOnClickListener { openActivityPage(JobStoriesActivity::class.java) }
 
+        findViewById<Button>(R.id.job_detail_btn).setOnClickListener { openActivityPage(JobDetailActivity::class.java) }
+
     }
 
     private fun openActivityPage(cls: Class<*>) {

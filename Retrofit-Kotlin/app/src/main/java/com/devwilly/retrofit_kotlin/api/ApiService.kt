@@ -1,5 +1,6 @@
 package com.devwilly.retrofit_kotlin.api
 
+import com.devwilly.retrofit_kotlin.model.JobDetailModel
 import com.devwilly.retrofit_kotlin.model.StoryDetailModel
 import io.reactivex.Observable
 import retrofit2.Call
@@ -26,4 +27,7 @@ interface ApiService {
 
     @GET("v0/jobstories.json?print=pretty")
     fun getJobStories(): Observable<List<Int>>
+
+    @GET("v0/item/{jobId}.json?print=pretty")
+    fun getJobDetail(@Path("jobId") jobId: Int): Observable<JobDetailModel>
 }
