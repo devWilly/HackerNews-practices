@@ -2,8 +2,11 @@ package com.devwilly.retrofit_kotlin
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.widget.TextView
 import com.devwilly.retrofit_kotlin.api.ApiClient
+import com.devwilly.retrofit_kotlin.data.TopStoryAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,24 +18,19 @@ class TopStoriesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.item_story_layout)
+        setContentView(R.layout.item_recyclerview_layout)
 
-        val storyText = findViewById<TextView>(R.id.story_text)
-        val sb = StringBuffer()
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         ApiClient.getApiService().getTopStories().enqueue(object : Callback<List<Int>>{
             override fun onResponse(call: Call<List<Int>>?, response: Response<List<Int>>?) {
-                sb.append(getString(R.string.top_stories))
 
                 val list = response?.body()
 
-                if (list != null) {
-                    for (item in list) {
-                        sb.append('\n').append(item)
-                    }
+                list?.let {
+                    recyclerView.adapter = TopStoryAdapter(list)
                 }
-
-                storyText.text = sb.toString()
             }
 
             override fun onFailure(call: Call<List<Int>>?, t: Throwable?) {
