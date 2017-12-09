@@ -6,4 +6,10 @@
     <string name="story_detail">[Story-Detail]</string>
     <string name="job_stories_rxjava">[Job-Stories+Rxjava]</string>
     <string name="job_detail_flatmap">[Job-detail+flatmap]</string>
+
+    <string name="job_id">JobId:%1$s</string>
+    <string name="job_title">JobTitle:%1$s</string>
+    <string name="job_text">JobText:%1$s</string>
+    <string name="job_type">JobType:%1$s</string>
+    <string name="job_time">JobTime:%1$s</string>
 </resources>
