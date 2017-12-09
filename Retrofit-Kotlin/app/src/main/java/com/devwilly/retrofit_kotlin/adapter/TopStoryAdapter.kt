@@ -1,4 +1,4 @@
-package com.devwilly.retrofit_kotlin.data
+package com.devwilly.retrofit_kotlin.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater

@@ -4,9 +4,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.widget.TextView
 import com.devwilly.retrofit_kotlin.api.ApiClient
-import com.devwilly.retrofit_kotlin.data.TopStoryAdapter
+import com.devwilly.retrofit_kotlin.adapter.TopStoryAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
