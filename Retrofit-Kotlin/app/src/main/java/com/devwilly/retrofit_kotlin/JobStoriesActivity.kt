@@ -2,7 +2,10 @@ package com.devwilly.retrofit_kotlin
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.widget.TextView
+import com.devwilly.retrofit_kotlin.adapter.JobStoryAdapter
 import com.devwilly.retrofit_kotlin.api.ApiClient
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -17,10 +20,10 @@ class JobStoriesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.item_story_layout)
+        setContentView(R.layout.item_recyclerview_layout)
 
-        val jobTitle = findViewById<TextView>(R.id.story_text)
-        val sb = StringBuffer()
+        var recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+        recyclerView.layoutManager = GridLayoutManager(this, 3)
 
 //        val jobStoryObservable =
 //                ApiClient.getApiServiceWithRx().getJobStories()
@@ -32,11 +35,7 @@ class JobStoriesActivity : AppCompatActivity() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         { list ->
-                            for (item in list) {
-                                sb.append(item).append('\n')
-                            }
-
-                            jobTitle.text = sb.toString()
+                            recyclerView.adapter = JobStoryAdapter(list)
                         }
                         , { e -> println("onError!") }
                         , { println("onComplete!") })
