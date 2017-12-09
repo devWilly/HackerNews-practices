@@ -2,7 +2,10 @@ package com.devwilly.retrofit_kotlin
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.widget.TextView
+import com.devwilly.retrofit_kotlin.adapter.JobDetailAdapter
 import com.devwilly.retrofit_kotlin.api.ApiClient
 import com.devwilly.retrofit_kotlin.model.JobDetailModel
 import io.reactivex.Observable
@@ -19,10 +22,12 @@ class JobDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.item_story_layout)
+        setContentView(R.layout.item_recyclerview_layout)
 
-        val jobDetailText = findViewById<TextView>(R.id.story_text)
-        val sb = StringBuffer()
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+        val jobListItem = mutableListOf<JobDetailModel>()
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         val jobStoryObservable =
                 ApiClient.getApiServiceWithRx().getJobStories()
@@ -35,19 +40,9 @@ class JobDetailActivity : AppCompatActivity() {
                             .flatMap { jobId -> getJobDetail(jobId) }
                             .subscribe(
                                     { jobModel ->
-                                        val by      = jobModel.by
-                                        val id      = jobModel.id
-                                        val score   = jobModel.score
-                                        val text    = jobModel.text
-                                        val time    = jobModel.time
-                                        val title   = jobModel.title
-                                        val type    = jobModel.type
-                                        val url     = jobModel.url
+                                        jobListItem.add(jobModel)
 
-                                        sb.append("=======================================").append('\n')
-                                                .append(title).append('\n').append(id).append('\n').append(text).append('\n')
-
-                                        jobDetailText.text = sb.toString()
+                                        recyclerView.adapter = JobDetailAdapter(jobListItem)
                                     }
                                     , { e -> println("get job detail info error!!") }
                                     , { println("get job detail onComplete!!") }
