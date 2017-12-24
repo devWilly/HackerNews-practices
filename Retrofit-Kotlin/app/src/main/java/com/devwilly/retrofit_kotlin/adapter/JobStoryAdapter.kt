@@ -7,7 +7,7 @@ import com.devwilly.retrofit_kotlin.R
 import com.devwilly.retrofit_kotlin.viewholder.JobStoryItemViewHolder
 
 /**
- * Created by Qoo on 09/12/2017.
+ * Created by Willy on 09/12/2017.
  */
 class JobStoryAdapter(itemList: List<Int>) : RecyclerView.Adapter<JobStoryItemViewHolder>() {
 
