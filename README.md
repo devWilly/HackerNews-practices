@@ -1,7 +1,7 @@
 # HackerNews-practices
 use retrofit2 and rxjava to practice hacker news api (java and kotlin code)
 
-### Skill
+### Implement Skills
 use retrofit2 and rxjava lib
 
 * retrofit2：http://square.github.io/retrofit/
